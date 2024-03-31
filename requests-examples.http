@@ -1,0 +1,57 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# получение объявлений
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+
+###
+
+# создание объявления от пользоватлея
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 07621ac6080c50fa4bb1a16c50b4c86ba59f685c
+
+{
+  "title": "Угли",
+  "description": "За самовывоз"
+}
+
+
+
+
+###
+
+# создание объявления от админа
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 0230753a74aed1662988ae55eb9dbf01c4b1fe41
+
+{
+  "title": "Пуфик Юзера",
+  "description": "Админа дарит дивана"
+}
+
+###
+
+# попытка поменять объявление от пользователя
+PATCH {{baseUrl}}/advertisements/1/
+Content-Type: application/json
+Authorization: Token 07621ac6080c50fa4bb1a16c50b4c86ba59f685c
+
+{
+  "status": "CLOSED"
+}
+
+###
+
+# фильтрация по создателю
+GET {{baseUrl}}/advertisements/?creator=2
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/advertisements/?created_at_after=2024-01-01
+Content-Type: application/json
